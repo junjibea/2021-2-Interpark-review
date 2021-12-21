@@ -1,0 +1,1071 @@
+```{r}
+library(dplyr)
+library(extrafont)
+library(RColorBrewer)
+library(stringr)
+library(wordcloud2)
+pal <- brewer.pal(7, "Set2")
+font_import()
+loadfonts(device = "win")
+windowsFonts(ten=windowsFont("10x10"))
+```
+
+```{r}
+data <- read.csv("review_total_all_fin.csv")
+data <- filter(data, rig==FALSE)
+```
+
+```{r}
+#1976 할란카운티
+halan <- filter(data, show == "1976 할란카운티")
+
+text <- str_replace_all(halan$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-2,-4,-6,-7,-11)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#V 에버 애프터
+vever <- filter(data, show == "V 에버 애프터")
+
+text <- str_replace_all(vever$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-8,-7,-9,-13,-18)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#개와 고양이의 시간
+dog <- filter(data, show == "개와 고양이의 시간")
+
+text <- str_replace_all(dog$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-8,-9,-10,-14,-24)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#검은 사제들
+black <- filter(data, show == "검은 사제들")
+
+text <- str_replace_all(black$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-4,-5,-8,-11,-24)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#경종수정실록
+king <- filter(data, show == "경종수정실록")
+
+text <- str_replace_all(king$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-6,-8,-9,-18,-25)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#광화문 연가
+gwang <- filter(data, show == "광화문 연가")
+
+text <- str_replace_all(gwang$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-2,-5,-6,-8,-12)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#그날들
+days <- filter(data, show == "그날들")
+
+text <- str_replace_all(days$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-4,-5,-7,-17)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#그라피티
+graf <- filter(data, show == "그라피티")
+
+text <- str_replace_all(graf$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-6,-7,-10,-23,-41)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#나빌레라
+na <- filter(data, show == "나빌레라")
+
+text <- str_replace_all(na$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-2,-5,-10,-23,-24)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#나와 나타샤와 흰 당나귀
+nat <- filter(data, show == "나와 나타샤와 흰 당나귀")
+
+text <- str_replace_all(nat$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-8,-11,-17,-37)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#노트르담 드 파리
+paris <- filter(data, show == "노트르담 드 파리")
+
+text <- str_replace_all(paris$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-2,-3,-5,-18,-27)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#다윈 영의 악의 기원
+darwin <- filter(data, show == "다윈 영의 악의 기원")
+
+text <- str_replace_all(darwin$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-4,-7,-13,-17)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#드라큘라
+dracula <- filter(data, show == "드라큘라")
+
+text <- str_replace_all(dracula$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-4,-6,-7,-8,-13)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#땡큐 베리 스트로베리
+thx <- filter(data, show == "땡큐 베리 스트로베리")
+
+text <- str_replace_all(thx$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-3,-5,-6,-13,-16,-19)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#라 레볼뤼시옹
+revol <- filter(data, show == "라 레볼뤼시옹")
+
+text <- str_replace_all(revol$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-5,-6,-9,-16,-33)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#레드북
+red <- filter(data, show == "레드북")
+
+text <- str_replace_all(red$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-4,-6,-7,-8)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#마리 앙투아네트
+marie <- filter(data, show == "마리 앙투아네트")
+
+text <- str_replace_all(marie$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-4,-5,-7,-13)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#마마,돈크라이
+mama <- filter(data, show == "마마,돈크라이")
+
+text <- str_replace_all(mama$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-5,-9,-10,-12,-32)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#마지막 사건
+last <- filter(data, show == "마지막 사건")
+
+text <- str_replace_all(last$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-6,-9,-10,-30,-48)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#맨오브라만차
+manof <- filter(data, show == "맨오브라만차")
+
+text <- str_replace_all(manof$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-5,-7,-12,-14)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#메리셸리
+mary <- filter(data, show == "메리셸리")
+
+text <- str_replace_all(mary$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-2,-7,-11,-12,-15,-16)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#멸화군
+fire <- filter(data, show == "멸화군")
+
+text <- str_replace_all(fire$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-7,-8,-11,-15,-29)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#명동로망스
+romance <- filter(data, show == "명동로망스")
+
+text <- str_replace_all(romance$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-2,-6,-7,-9,-18,-36)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#명성황후
+queen <- filter(data, show == "명성황후")
+
+text <- str_replace_all(queen$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-2,-4,-5,-7,-31)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#몬테크리스토
+monte <- filter(data, show == "몬테크리스토")
+
+text <- str_replace_all(monte$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-2,-3,-4,-9,-20)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#미드나잇 : 액터뮤지션
+midnight <- filter(data, show == "미드나잇 : 액터뮤지션")
+
+text <- str_replace_all(midnight$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-4,-5,-8,-22,-28)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#박열
+park <- filter(data, show == "박열")
+
+text <- str_replace_all(park$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-7,-14,-15,-16)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#베르나르다 알바
+bernarda <- filter(data, show == "베르나르다 알바")
+
+text <- str_replace_all(bernarda$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-2,-4,-5,-10,-17)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#붉은 정원
+garden <- filter(data, show == "붉은 정원")
+
+text <- str_replace_all(garden$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-5,-11,-12,-16,-46)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#브라더스 까라마조프
+bro <- filter(data, show == "브라더스 까라마조프")
+
+text <- str_replace_all(bro$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-5,-6,-7,-14,-42)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#블랙메리포핀스
+poppins <- filter(data, show == "블랙메리포핀스")
+
+text <- str_replace_all(poppins$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-6,-10,-13,-17)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#블루레인
+blue <- filter(data, show == "블루레인")
+
+text <- str_replace_all(blue$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-4,-7,-9,-10)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#비틀쥬스
+beetle <- filter(data, show == "비틀쥬스")
+
+text <- str_replace_all(beetle$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-5,-6,-7,-8,-10)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#빌리 엘리어트
+billy <- filter(data, show == "빌리 엘리어트")
+
+text <- str_replace_all(billy$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-2,-3,-7,-9,-10,-11)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#세자전
+prince <- filter(data, show == "세자전")
+
+text <- str_replace_all(prince$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-2,-3,-4,-5,-12,-18)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#스모크
+smoke <- filter(data, show == "스모크")
+
+text <- str_replace_all(smoke$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-2,-4,-6,-12,-15,-17)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#스웨그에이지 : 외쳐, 조선!
+swag <- filter(data, show == "스웨그에이지 : 외쳐, 조선!")
+
+text <- str_replace_all(swag$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-5,-7,-8,-9,-10)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#스프링 어웨이크닝
+spring <- filter(data, show == "스프링 어웨이크닝")
+
+text <- str_replace_all(spring$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-5,-9,-12,-15,-26)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#시카고
+chicago <- filter(data, show == "시카고")
+
+text <- str_replace_all(chicago$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-4,-6,-8,-9)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#쓰릴 미
+thrill <- filter(data, show == "쓰릴 미")
+
+text <- str_replace_all(thrill$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-2,-5,-6,-7,-9,-29)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#아가사
+agatha <- filter(data, show == "아가사 AGATHA")
+
+text <- str_replace_all(agatha$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-5,-6,-10,-11,-19)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#아르토, 고흐
+gogh <- filter(data, show == "아르토, 고흐")
+
+text <- str_replace_all(gogh$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-6,-7,-9,-12,-38)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#아이위시
+wish <- filter(data, show == "아이위시")
+
+text <- str_replace_all(wish$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-5,-6,-9,-15)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#아킬레스
+achill <- filter(data, show == "아킬레스")
+
+text <- str_replace_all(achill$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-2,-5,-6,-7,-9,-12)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#어쩌면 해피엔딩
+maybe <- filter(data, show == "어쩌면 해피엔딩")
+
+text <- str_replace_all(maybe$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-4,-6,-12,-13,-22)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#에어포트 베이비
+airport <- filter(data, show == "에어포트 베이비")
+
+text <- str_replace_all(airport$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-7,-9,-12,-15,-29)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#엑스칼리버
+xcal <- filter(data, show == "엑스칼리버")
+
+text <- str_replace_all(xcal$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-4,-5,-8,-9,-10)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#우주대스타
+star <- filter(data, show == "우주대스타")
+
+text <- str_replace_all(star$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-4,-5,-7,-11,-36)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#위키드
+wicked <- filter(data, show == "위키드")
+
+text <- str_replace_all(wicked$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-3,-4,-5,-6,-7)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#유진과 유진
+ujin <- filter(data, show == "유진과 유진")
+
+text <- str_replace_all(ujin$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-4,-10,-13,-14,-24)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#윤동주, 달을 쏘다.
+shoot <- filter(data, show == "윤동주, 달을 쏘다.")
+
+text <- str_replace_all(shoot$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-2,-5,-10,-11,-15,-96)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#인사이드 윌리엄
+will <- filter(data, show == "인사이드 윌리엄")
+
+text <- str_replace_all(will$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-7,-8,-9,-11,-15)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#젠틀맨스가이드
+gentle <- filter(data, show == "젠틀맨스가이드：사랑과 살인편")
+
+text <- str_replace_all(gentle$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-2,-3,-4,-6,-24)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#쿠로이 저택엔 누가 살고 있을까?
+who <- filter(data, show == "쿠로이 저택엔 누가 살고 있을까？")
+
+text <- str_replace_all(who$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-2,-5,-6,-7,-13)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#트레이스 유
+trace <- filter(data, show == "트레이스 유")
+
+text <- str_replace_all(trace$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-5,-6,-8,-11,-18)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#판
+pan <- filter(data, show == "판")
+
+text <- str_replace_all(pan$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-2,-4,-5,-6,-8)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#포미니츠
+minute <- filter(data, show == "포미니츠")
+
+text <- str_replace_all(minute$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-2,-3,-7,-9,-12,-13)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#풍월주
+poong <- filter(data, show == "풍월주")
+
+text <- str_replace_all(poong$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-6,-8,-11,-15,-26)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#하데스타운
+hades <- filter(data, show == "하데스타운")
+
+text <- str_replace_all(hades$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-4,-5,-6,-7,-10)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#해적
+pirate <- filter(data, show == "해적")
+
+text <- str_replace_all(pirate$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-5,-6,-7,-12,-18)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#헤드윅
+hedwig <- filter(data, show == "헤드윅")
+
+text <- str_replace_all(hedwig$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-4,-5,-7,-9,-26)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
+```{r}
+#홀연했던 사나이
+man <- filter(data, show == "홀연했던 사나이")
+
+text <- str_replace_all(man$subLive, pattern = "[[:punct:]]", "")
+text <- str_subset(text, pattern = "[가-힣]+")
+text <- str_split(text, pattern = " ")
+text <- unlist(text)
+text <- Filter(function(x) {nchar(x)>=2}, text)
+count <- table(text)
+count <- head(sort(count, decreasing = T), 206)
+View(count)
+recount <- count[c(-1,-6,-7,-8,-10,-38)]
+
+wordcloud2(data=recount, color=pal, fontFamily="ten")
+```
+
